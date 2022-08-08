@@ -1,0 +1,86 @@
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.card{
+    background-color: blanchedalmond;
+    border-radius: 5px;
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+    padding: 30px;
+    margin: 20px;
+    width: 400px;
+    transition: all 0.3s ease-out;
+    
+}
+.card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+.card h2{
+    color: brown;
+    font-family: sans-serif;
+
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-family: fantasy;
+    color: rgb(41, 147, 209);
+}
+.container_btn{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed brown;
+    height: 150px;
+}
+.image img{
+    width: 240px;
+    height: 240px;
+}
+.name{
+    display: flex;
+    justify-content: center;
+    color:brown;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+.span{
+    width: 410px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.progress{
+    display: flex;   
+    flex-direction: column;
+    font-family: fantasy;
+    color:rgb(41, 147, 209);
+    border: 50px;
+}
+
+.progress_span{
+   display: flex; 
+   width:400px; 
+   height:40px;
+   
+}
+.progress_span label{
+    display: flex;
+    
+}
+.progress_span progress{
+    margin-left: 70px;
+}
+
+
