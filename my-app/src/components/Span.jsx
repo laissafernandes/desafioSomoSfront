@@ -5,8 +5,6 @@ function Label({ text }){
         <span className={styles.style_span}>{text}
         </span>
 
-       
-
     )
 }
 
