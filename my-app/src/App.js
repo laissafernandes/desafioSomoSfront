@@ -1,12 +1,12 @@
 // import logo from './logo.svg';
 import './App.css';
-import Cards from './components/Cards';
+import './components/StyleMain.module.css'
+import Main from './components/Main';
 function App() {
   return (
-    <div className="App">
-      
-      <Cards />
-    </div>
+    <>
+      <Main />
+    </>
   );
 }
 
