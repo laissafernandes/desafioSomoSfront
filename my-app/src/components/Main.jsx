@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./style.module.css";
+import styles from "./StyleMain.module.css";
 import Button from "./Button";
 import Span from "./Span";
 import Card from "./Card";
@@ -10,7 +10,7 @@ function Main(){
     return (
         <div className={styles.row}>
             <div className={styles.card}>
-                <Card text="Ivy" />
+                <Card text="ivy" />
                                 
                 <div className={styles.container_btn}>
                     <Button text="Voltar" />
@@ -34,11 +34,19 @@ function Main(){
                 </div>
 
                 <div className={styles.progress}>
+                    <label for="file">HP</label>  
+                    <Progress text="50" />
 
-                    <Progress num="50" text="HP" />
-                    <Progress num="60" text="HP" />
-                    <Progress num="10" text="HP" />
-                    <Progress num="20" text="HP" />
+                    <label for="file">AD</label>  
+                    <Progress text="10" />
+
+                    <label for="file">FAFP</label>  
+                    <Progress text="30" />
+
+                    <label for="file">DADA</label>  
+                    <Progress text="80" />
+
+                    
                 </div>
                 
                 

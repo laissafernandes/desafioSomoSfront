@@ -1,0 +1,22 @@
+
+.progress{
+    display: flex;   
+    flex-direction: column;
+    font-family: fantasy;
+    color:rgb(41, 147, 209);
+    border: 50px;
+}
+
+.progress_span{
+   display: flex; 
+   width:400px; 
+   height:40px;
+   
+}
+.progress_span label{
+    display: flex;
+    
+}
+.progress_span progress{
+    margin-left: 70px;
+}

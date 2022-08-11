@@ -1,13 +1,15 @@
 import React from "react";
-import styles from "./style.module.css";
+import styles from "./StyleMain.module.css";
 
-function Card({text}){
+function Card(){
 
     return(
        <>
             <h2>Pokemons</h2>
                 <div className={styles.list}>
-                    <p>{text}</p>
+                    <p>ivy</p>
+                    <p>charm</p>
+
                     
                 </div>
        </>

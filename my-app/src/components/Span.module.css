@@ -1,9 +1,12 @@
+
 .style_span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100px;
     height: 25px;
     color: lightblue;
-    align-items: center;
     background-color: brown;
-    justify-content: space-between;
+   
     
 }

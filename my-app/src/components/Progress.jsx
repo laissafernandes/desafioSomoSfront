@@ -1,13 +1,12 @@
 import React from "react";
-import styles from "./style.module.css";
+import styles from "./Progress.module.css";
 
-function Progress({text},{num}){
+function Progress({text}){
     return(
         <>
             <div className={styles.progress_bar}>
-                    
-                    <label for="file">{text}</label>   
-                    <progress  value={num} max="100" className={styles.progress_span}>{num} %</progress>
+                  
+                   <progress  value={text} max="100" className={styles.progress_span}>{text}%</progress>
             </div>
         </>
     )   

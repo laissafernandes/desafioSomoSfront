@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+*{
+    font-family: 'Silkscreen', cursive;
+    padding: 0px;
+    margin: 0;
+}
+body{
+    background-color: beige;
+}
 .row {
     display: flex;
     justify-content: center;
@@ -39,7 +48,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed brown;
     height: 150px;
 }
 .image img{
@@ -59,28 +67,6 @@
     display: flex;
     justify-content: space-around;
     margin-bottom: 30px;
-}
-
-.progress{
-    display: flex;   
-    flex-direction: column;
-    font-family: fantasy;
-    color:rgb(41, 147, 209);
-    border: 50px;
-}
-
-.progress_span{
-   display: flex; 
-   width:400px; 
-   height:40px;
-   
-}
-.progress_span label{
-    display: flex;
-    
-}
-.progress_span progress{
-    margin-left: 70px;
 }
 
 
