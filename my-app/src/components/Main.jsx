@@ -46,7 +46,7 @@ function Main(){
 
         
         <div className={styles.row}>
-            <div className={styles.card}>
+            <div className={styles.card} >
                 <h2>Pokemons</h2>
                 <Card pokemon={pokeData} loading={loading} infoPokemon={poke=>setPokeDex(poke)} />
                

@@ -5,7 +5,9 @@
     margin: 0;
 }
 body{
+
     background-color: beige;
+    
 }
 .row {
     display: flex;
@@ -16,7 +18,6 @@ body{
 }
 .card{
     background-color: blanchedalmond;
-   
     border-radius: 5px;
     box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
     padding: 30px;
