@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./Span.module.css";
 
-function Label({ text }){
+function Span({ text }){
     return(
+       
         <span className={styles.style_span}>{text}</span>
 
     )
 }
 
-export default Label;
+export default Span;

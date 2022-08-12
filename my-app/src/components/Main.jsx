@@ -1,54 +1,70 @@
 import React from "react";
 import styles from "./StyleMain.module.css";
 import Button from "./Button";
-import Span from "./Span";
 import Card from "./Card";
-import Progress from "./Progress";
+import axios from 'axios';
+import Pokeinfo from "./Pokeinfo";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Main(){
+    const[pokeData, setPokeData]=useState([]);
+    const[loading,setLoading]=useState(true);
+    const[url,setUrl]=useState("https://pokeapi.co/api/v2/pokemon/");
+    const[nextUrl, setNextUrl]=useState();
+    const [prevUrl, setPrevUrl]=useState();
+    const[pokeDex,setPokeDex]=useState();
+    const pokeFun=async()=>{
+        setLoading(true)
+        const res=await axios.get(url);
+        //console.log(res.data.results);
+        setNextUrl(res.data.next);
+        setPrevUrl(res.data.previous);
+        getPokemon(res.data.results);
+        setLoading(false);
+        //console.log(pokeData);
+
+    }
+    const getPokemon = async(res)=>{
+        res.map(async(item) => {
+            const result=await axios.get(item.url)
+            //console.log(result.data);
+            setPokeData(state=>{
+                state=[...state,result.data];
+                state.sort((a,b)=>a.id>b.id?1:+1) 
+                return state;
+            })
+
+
+        });
+    }
+    useEffect(()=>{
+        pokeFun();
+    }, [url]);
 
     return (
+
+        
         <div className={styles.row}>
             <div className={styles.card}>
-                <Card text="ivy" />
-                                
+                <h2>Pokemons</h2>
+                <Card pokemon={pokeData} loading={loading} infoPokemon={poke=>setPokeDex(poke)} />
+               
                 <div className={styles.container_btn}>
-                    <Button text="Voltar" />
-                    <Button text="Avançar" />
+                    { prevUrl && <Button text="Voltar" onClick={()=>{
+                        setPokeData([])
+                        setUrl(prevUrl)
+                    }} />}
+
+                    {nextUrl && <Button text="Avançar" onClick={()=>{
+                        setPokeData([])
+                        setUrl(nextUrl)
+                    }} />}
                 </div>
             </div>
 
             <div className={styles.card}>
-                <div className={styles.image}>
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png" alt=""/>
-                </div>
-
-                <div className={styles.name}>
-                    <p>Ivysaur</p>
-                </div>
-                
-                <div className={styles.span}>
-                    <Span text="Grass" />
-                    
-                    <Span text="Poison" />
-                </div>
-
-                <div className={styles.progress}>
-                    <label for="file">HP</label>  
-                    <Progress text="50" />
-
-                    <label for="file">AD</label>  
-                    <Progress text="10" />
-
-                    <label for="file">FAFP</label>  
-                    <Progress text="30" />
-
-                    <label for="file">DADA</label>  
-                    <Progress text="80" />
-
-                    
-                </div>
-                
+                <Pokeinfo data={pokeDex} />
                 
             </div>
 

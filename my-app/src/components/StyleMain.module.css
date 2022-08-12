@@ -12,9 +12,11 @@ body{
     justify-content: center;
     align-items: center;
     
+    
 }
 .card{
     background-color: blanchedalmond;
+   
     border-radius: 5px;
     box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
     padding: 30px;
@@ -38,6 +40,7 @@ body{
     margin-bottom: 10px;
     font-family: fantasy;
     color: rgb(41, 147, 209);
+    
 }
 .container_btn{
     display: flex;
@@ -49,6 +52,8 @@ body{
     align-items: center;
     justify-content: center;
     height: 150px;
+    margin: 2rem;
+    padding: 30px;
 }
 .image img{
     width: 240px;

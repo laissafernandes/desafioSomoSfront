@@ -1,17 +1,24 @@
 import React from "react";
 import styles from "./StyleMain.module.css";
 
-function Card(){
-
+function Card({pokemon, loading, infoPokemon}){
+    console.log(pokemon);
     return(
        <>
-            <h2>Pokemons</h2>
-                <div className={styles.list}>
-                    <p>ivy</p>
-                    <p>charm</p>
-
-                    
-                </div>
+            {
+                loading ? <h2>Loading...</h2> : 
+                pokemon.map((item)=>{
+                    return(
+                        <> 
+                            <div className={styles.list} key={item.id} onClick={()=>infoPokemon(item)}>
+                                <p>{item.id} {item.name}</p>
+                                
+                            </div>
+                        </>
+                    )
+                })
+            }
+            
        </>
           
     )
