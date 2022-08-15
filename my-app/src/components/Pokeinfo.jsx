@@ -4,15 +4,19 @@ import styles from "./StyleMain.module.css";
 
 
 function Pokeinfo({ data }) {
-    console.log(data)
+    
     return (
         <>
 
             {
                 (!data) ? "" : (
                     <>
+
                         <div className={styles.image}>
-                            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`} alt="" />
+                            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`} 
+                            alt="" class="image" />
+
+                            
                         </div>
 
                         <div className={styles.name}>
@@ -57,4 +61,6 @@ function Pokeinfo({ data }) {
         </>
     )
 }
+
+
 export default Pokeinfo;

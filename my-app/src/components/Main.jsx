@@ -7,39 +7,48 @@ import Pokeinfo from "./Pokeinfo";
 import { useState } from "react";
 import { useEffect } from "react";
 
+
 function Main() {
     const [pokeData, setPokeData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/?limit=5&offset=5");
+    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=10");
     const [nextUrl, setNextUrl] = useState("");
     const [prevUrl, setPrevUrl] = useState("");
     const [pokeDex, setPokeDex] = useState();
-
+//     const img = document.querySelector('.image');
+    
+//     img.addEventListener("click", function () {
+//         img.style.background = "../../public/25.svg";
+//  });
+    
     const getPokemon = async (res) => {
-        // tirar o async
-        // const test =// 
+       
         res.map(async (item) => {
         
             const result = await axios.get(item.url)
-            // return{
-            //     ...item,
-            //     data: result.data
-            // }
-            
-
+        //organiza os dados que vem da Api 
             setPokeData(state => {
                 state = [...state, result.data];
                 state.sort((a, b) => a.id > b.id ? 1 : -1)
                 return state;
             })
 
-
         });
-        // setPokeData(test)
-        // console.log(test)
-       
-
+    
     }
+    
+    // function eventBg(){
+       
+    //    return(
+    //     <>
+    //         <img onClick={e => 
+    //       setBackground(background === 'beige'?'blue':'beige')} alt=""/>
+    //     </>
+    //    )
+    // }
+    // ReactDOM.render( <eventBg/> , document.getElementById('root'));
+
+    
 
     useEffect(() => {
         const pokeFun = async () => {
@@ -53,7 +62,12 @@ function Main() {
             
 
         }
+        // const eventPoke =  () => {
+        //     document.body.style.background = background;
+        // }
+        // eventPoke();
         pokeFun();
+        
     }, [url]);
 
     return (
@@ -65,15 +79,15 @@ function Main() {
                 <Card pokemon={pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
 
                 <div className={styles.container_btn}>
-                    {prevUrl && <Button text="Voltar" onClick={() => {
+                    <Button text="Voltar" onClick={() => {
                         setPokeData([])
                         setUrl(prevUrl)
-                    }} />}
+                    }} />
 
-                    {nextUrl && <Button text="Avançar" onClick={() => {
+                    <Button text="Avançar" onClick={() => {
                         setPokeData([])
                         setUrl(nextUrl)
-                    }} />}
+                    }} />
                 </div>
             </div>
 
