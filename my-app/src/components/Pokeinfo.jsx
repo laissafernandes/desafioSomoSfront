@@ -14,7 +14,7 @@ function Pokeinfo({ data }) {
 
                         <div className={styles.image}>
                             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`} 
-                            alt="" class="image" />
+                            alt="" class="image" click/>
 
                             
                         </div>

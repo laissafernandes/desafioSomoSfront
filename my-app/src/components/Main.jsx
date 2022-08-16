@@ -1,12 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./StyleMain.module.css";
 import Button from "./Button";
 import Card from "./Card";
 import axios from 'axios';
 import Pokeinfo from "./Pokeinfo";
-import { useState } from "react";
-import { useEffect } from "react";
-
 
 function Main() {
     const [pokeData, setPokeData] = useState([]);
@@ -15,14 +12,8 @@ function Main() {
     const [nextUrl, setNextUrl] = useState("");
     const [prevUrl, setPrevUrl] = useState("");
     const [pokeDex, setPokeDex] = useState();
-//     const img = document.querySelector('.image');
-    
-//     img.addEventListener("click", function () {
-//         img.style.background = "../../public/25.svg";
-//  });
-    
+
     const getPokemon = async (res) => {
-       
         res.map(async (item) => {
         
             const result = await axios.get(item.url)
@@ -34,46 +25,26 @@ function Main() {
             })
 
         });
-    
     }
-    
-    // function eventBg(){
-       
-    //    return(
-    //     <>
-    //         <img onClick={e => 
-    //       setBackground(background === 'beige'?'blue':'beige')} alt=""/>
-    //     </>
-    //    )
-    // }
-    // ReactDOM.render( <eventBg/> , document.getElementById('root'));
-
-    
 
     useEffect(() => {
         const pokeFun = async () => {
             setLoading(true)
             const res = await axios.get(url);
-            
+
             setNextUrl(res.data.next);
             setPrevUrl(res.data.previous);
             getPokemon(res.data.results);
             setLoading(false);
-            
-
         }
-        // const eventPoke =  () => {
-        //     document.body.style.background = background;
-        // }
-        // eventPoke();
         pokeFun();
         
     }, [url]);
 
+    const [changeBackground, setChangeBackground] = useState(false);
+
     return (
-
-
-        <div className={styles.row}>
+        <div className={styles.row} style={{ backgroundColor: changeBackground ? 'yellow' : 'blanchedalmond' }} >
             <div className={styles.card} >
                 <h2>Pokemons</h2>
                 <Card pokemon={pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
@@ -92,8 +63,7 @@ function Main() {
             </div>
 
             <div className={styles.card}>
-                <Pokeinfo data={pokeDex} />
-
+                <Pokeinfo data={pokeDex} eventChangeBg={() => { setChangeBackground(!changeBackground) }}/>
             </div>
 
         </div>
