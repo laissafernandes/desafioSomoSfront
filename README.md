@@ -6,7 +6,7 @@ Esse projeto tem como objetivo criar um catálago de pokemon utilizando front-en
 
 
 
-## Screenshots
+## Layout da Aplicação
 
 ![App Screenshot](./my-app/public/my-app.jpg)
 
