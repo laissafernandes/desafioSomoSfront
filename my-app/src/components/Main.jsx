@@ -13,12 +13,13 @@ function Main() {
     const [prevUrl, setPrevUrl] = useState("");
     const [pokeDex, setPokeDex] = useState();
 
-    const getPokemon = async (res) => {
+    const getPokemon = (res) => {
         res.map(async (item) => {
         
             const result = await axios.get(item.url)
         //organiza os dados que vem da Api 
             setPokeData(state => {
+               
                 state = [...state, result.data];
                 state.sort((a, b) => a.id > b.id ? 1 : -1)
                 return state;
@@ -28,6 +29,7 @@ function Main() {
     }
 
     useEffect(() => {
+        
         const pokeFun = async () => {
             setLoading(true)
             const res = await axios.get(url);
@@ -41,10 +43,10 @@ function Main() {
         
     }, [url]);
 
-    const [changeBackground, setChangeBackground] = useState(false);
+    const [changeBackground, setChangeBackground] = useState(true);
 
     return (
-        <div className={styles.row} style={{ backgroundColor: changeBackground ? 'yellow' : 'blanchedalmond' }} >
+        <div className={styles.row} style={{ backgroundColor: changeBackground ? '#fff6a4' : 'yellow' }} >
             <div className={styles.card} >
                 <h2>Pokemons</h2>
                 <Card pokemon={pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
@@ -63,7 +65,7 @@ function Main() {
             </div>
 
             <div className={styles.card}>
-                <Pokeinfo data={pokeDex} eventChangeBg={() => { setChangeBackground(!changeBackground) }}/>
+                <Pokeinfo data={pokeDex} eventChangeBg={() => { setChangeBackground(changeBackground) }}/>
             </div>
 
         </div>

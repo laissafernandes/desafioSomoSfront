@@ -4,7 +4,7 @@ import styles from "./StyleMain.module.css";
 
 
 function Pokeinfo({ data }) {
-    
+
     return (
         <>
 
@@ -13,10 +13,10 @@ function Pokeinfo({ data }) {
                     <>
 
                         <div className={styles.image}>
-                            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`} 
-                            alt="" class="image" click/>
+                            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`}
+                                alt="" class="image" />
 
-                            
+
                         </div>
 
                         <div className={styles.name}>
@@ -28,7 +28,7 @@ function Pokeinfo({ data }) {
                                 data.abilities.map(poke => {
                                     return (
                                         <>
-                                            <span className={styles.style_span}>{poke.ability.name}</span>
+                                            <span className={styles.span}>{poke.ability.name}</span>
                                         </>
                                     )
                                 })
@@ -44,7 +44,7 @@ function Pokeinfo({ data }) {
                                             <h3>{poke.stat.name}</h3>
                                             <Progress data={poke.base_stat} />
 
-                                            
+
                                         </>
                                     )
                                 })
