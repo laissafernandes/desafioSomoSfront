@@ -1,0 +1,18 @@
+
+.progress{
+    display: flex;   
+    flex-direction: column;
+    font-family: fantasy;
+    color: #c52018;
+    border: 50px;
+}
+
+.progress_span{
+   display: flex; 
+   width:400px; 
+   height:40px;
+   
+}
+.progress_span progress{
+    margin-left: 70px;
+}
