@@ -21,6 +21,7 @@ function Main() {
             setPokeData(state => {
                
                 state = [...state, result.data];
+                console.log("funcionando?")
                 state.sort((a, b) => a.id > b.id ? 1 : -1)
                 return state;
             })
