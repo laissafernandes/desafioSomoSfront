@@ -7,11 +7,14 @@ function Card({pokemon, loading, infoPokemon}){
        <>
             {
                 loading ? <h2>Loading...</h2> : 
-                pokemon.map((item)=>{
+                //tratamento de erros (se chegou em pokemon ele mostra, se não ele aguarda)
+                !!pokemon && 
+                pokemon.map((item, index)=>{
+                    
                     return(
                         <> 
-                            <div className={styles.list} key={item.id} onClick={()=>infoPokemon(item)}>
-                                <p>{item.id} {item.name}</p>
+                            <div className={styles.list} key={index + 1} onClick={()=>infoPokemon(item.name)}>
+                                <p>{index + 1} {item.name}</p>
                                 
                             </div>
                         </>

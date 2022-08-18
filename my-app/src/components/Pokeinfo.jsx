@@ -9,7 +9,8 @@ function Pokeinfo({ data }) {
         <>
 
             {
-                (!data) ? "" : (
+                //tratamento de erros
+                !!data && (
                     <>
 
                         <div className={styles.image}>

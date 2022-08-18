@@ -8,40 +8,30 @@ import Pokeinfo from "./Pokeinfo";
 function Main() {
     const [pokeData, setPokeData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=10");
+    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0");
     const [nextUrl, setNextUrl] = useState("");
     const [prevUrl, setPrevUrl] = useState("");
     const [pokeDex, setPokeDex] = useState();
 
-    const getPokemon = (res) => {
-        res.map(async (item) => {
+    const getPokemon = async (nomePokemon) => {
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nomePokemon}`)
         
-            const result = await axios.get(item.url)
-        //organiza os dados que vem da Api 
-            setPokeData(state => {
-               
-                state = [...state, result.data];
-                console.log("funcionando?")
-                state.sort((a, b) => a.id > b.id ? 1 : -1)
-                return state;
-            })
-
-        });
+        setPokeDex(res.data);
+       
     }
-
+    const pokeFun = async () => {
+        setLoading(true)
+        const res= await axios.get(url);
+        console.log(res);
+        setNextUrl(res.data.next);
+        setPrevUrl(res.data.previous);
+        //getPokemon não precisa mais pois chamo na linha 17;
+        setPokeData(res.data.results);
+        setLoading(false);
+    }
+    
     useEffect(() => {
-        
-        const pokeFun = async () => {
-            setLoading(true)
-            const res = await axios.get(url);
-
-            setNextUrl(res.data.next);
-            setPrevUrl(res.data.previous);
-            getPokemon(res.data.results);
-            setLoading(false);
-        }
         pokeFun();
-        
     }, [url]);
 
     const [changeBackground, setChangeBackground] = useState(true);
@@ -50,7 +40,7 @@ function Main() {
         <div className={styles.row} style={{ backgroundColor: changeBackground ? '#fff6a4' : 'yellow' }} >
             <div className={styles.card} >
                 <h2>Pokemons</h2>
-                <Card pokemon={pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
+                <Card pokemon={pokeData} loading={loading} infoPokemon={getPokemon} />
 
                 <div className={styles.container_btn}>
                     <Button text="Voltar" onClick={() => {
@@ -66,7 +56,7 @@ function Main() {
             </div>
 
             <div className={styles.card}>
-                <Pokeinfo data={pokeDex} eventChangeBg={() => { setChangeBackground(changeBackground) }}/>
+              {pokeDex &&  <Pokeinfo data={pokeDex} eventChangeBg={() => { setChangeBackground(changeBackground) }} />}
             </div>
 
         </div>
