@@ -12,6 +12,7 @@ function Main() {
     const [nextUrl, setNextUrl] = useState("");
     const [prevUrl, setPrevUrl] = useState("");
     const [pokeDex, setPokeDex] = useState();
+    
 
     const getPokemon = async (nomePokemon) => {
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nomePokemon}`)
@@ -28,19 +29,20 @@ function Main() {
         //getPokemon não precisa mais pois chamo na linha 17;
         setPokeData(res.data.results);
         setLoading(false);
+        
     }
     
     useEffect(() => {
         pokeFun();
     }, [url]);
 
-    const [changeBackground, setChangeBackground] = useState(true);
+    
 
     return (
-        <div className={styles.row} style={{ backgroundColor: changeBackground ? '#fff6a4' : 'yellow' }} >
+        <div className={styles.row}  >
             <div className={styles.card} >
                 <h2>Pokemons</h2>
-                <Card pokemon={pokeData} loading={loading} infoPokemon={getPokemon} />
+                <Card pokemon={pokeData} loading={loading} infoPokemon={getPokemon}  />
 
                 <div className={styles.container_btn}>
                     <Button text="Voltar" onClick={() => {
@@ -56,7 +58,7 @@ function Main() {
             </div>
 
             <div className={styles.card}>
-              {pokeDex &&  <Pokeinfo data={pokeDex} eventChangeBg={() => { setChangeBackground(changeBackground) }} />}
+              {pokeDex &&  <Pokeinfo data={pokeDex} />}
             </div>
 
         </div>

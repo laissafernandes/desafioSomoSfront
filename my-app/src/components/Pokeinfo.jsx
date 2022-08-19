@@ -1,9 +1,39 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Progress from "./Progress";
 import styles from "./StyleMain.module.css";
 
 
+
 function Pokeinfo({ data }) {
+    const [img, setImg] = useState();
+    let id = data.id;
+    let count = 0;
+    let checkImg = ()=>{setImg(data.sprites.front_default)};
+    
+    function changePikachu(){
+       
+        if(id === 25){
+            count++;
+            if(count >= 3){
+                setImg(data.sprites.other.dream_world.front_default);
+            }else{
+                setImg(data.sprites.front_default)
+            }
+            
+        }else{
+            
+            count = 0;
+            setImg(data.sprites.front_default);
+            
+        }
+    }
+    useEffect(() => {
+        checkImg()
+    }, [data]);
+    console.log("renderizei")
+
+    
+
 
     return (
         <>
@@ -14,8 +44,8 @@ function Pokeinfo({ data }) {
                     <>
 
                         <div className={styles.image}>
-                            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`}
-                                alt="" class="image" />
+                            <img src={img}
+                                alt="imagem" onClick={()=>{changePikachu()}}/>
 
 
                         </div>
